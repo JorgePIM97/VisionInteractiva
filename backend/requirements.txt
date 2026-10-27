@@ -1,0 +1,8 @@
+# Instalar primero PyTorch con CUDA (ajustar cuXXX a la versión del driver, ver nvidia-smi):
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+ultralytics
+fastapi
+uvicorn[standard]
+opencv-python
+pyrealsense2
+numpy
