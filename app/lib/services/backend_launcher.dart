@@ -42,7 +42,7 @@ class BackendLauncher {
     }
     final python = File('${backend.path}\\.venv\\Scripts\\python.exe');
     if (!python.existsSync()) {
-      return 'No existe ${python.path}. Ejecuta primero setup_backend.bat.';
+      return 'No existe ${python.path}. Ejecuta primero instalar.bat.';
     }
 
     onProgress?.call('Iniciando el servidor de visión...');

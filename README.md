@@ -13,14 +13,24 @@ Flutter (app/)  ── REST: configuración ──►  Python FastAPI (backend/)
 
 ## Instalación (una sola vez)
 
-1. **Python 3.11** y el **driver NVIDIA** (para CUDA).
-2. **Intel RealSense SDK 2.0** (incluye `realsense-viewer`). Conecta la D457 por **USB‑C 3.x**
-   y verifica en `realsense-viewer` que se ven color y profundidad. Actualiza el firmware si lo pide.
-3. Ejecuta `setup_backend.bat`: crea `backend\.venv`, instala PyTorch con CUDA y las dependencias.
-4. Compila la app: `cd app` y luego `flutter build windows --release`.
-   El ejecutable queda en `app\build\windows\x64\runner\Release\vision_interactiva.exe`.
+1. Instala **Python 3.11** desde python.org, marcando "Add python.exe to PATH". Si la computadora tiene
+   tarjeta NVIDIA, instala también su **driver**.
+2. Para la D457, instala el **Intel RealSense SDK 2.0** (incluye `realsense-viewer`). Conecta la cámara por
+   **USB‑C 3.x** y verifica en `realsense-viewer` que se ven el color y la profundidad.
+3. `git clone` del repositorio.
+4. Doble clic en **`instalar.bat`**. El instalador:
+   - detecta la GPU e instala PyTorch con CUDA, o la versión para CPU si no hay GPU;
+   - instala las dependencias y descarga los modelos nano para poder trabajar sin internet;
+   - compila la app si la computadora tiene Flutter;
+   - crea un acceso directo en el escritorio.
 
-La primera vez que se usa cada modelo, ultralytics descarga sus pesos (6–50 MB) a `backend\models\`.
+   Se puede volver a ejecutar sin problema, por ejemplo después de un `git pull`.
+
+**Computadora sin Flutter:** compila en otra PC con `flutter build windows --release` y copia la carpeta
+**completa** `app\build\windows\x64\runner\Release\` a la misma ruta de este proyecto. Después vuelve a
+ejecutar `instalar.bat` para que cree el acceso directo.
+
+Los modelos Small y Medium se descargan la primera vez que se usan (a `backend\models\`).
 
 ## Uso
 
